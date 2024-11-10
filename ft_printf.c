@@ -6,42 +6,53 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:11:51 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/10 14:29:46 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/10 16:27:54 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#include "printf.h"
 #include "libft/libft.h"
 
-int ft_printf(const char *fmt, ...)
+int	ft_handle(va_list ap, char c)
+{
+	char	d;
+	int		len;
+
+	len = 0;
+	if (c == 's')
+		len = ft_putstr(va_arg(ap, char *));
+	else if(c == 'c')
+	{
+		d = (char) va_arg(ap, int);
+		ft_putchar(d);
+	}
+	else if (c == 'd')
+		len = ft_printnbr(va_arg(ap, int));
+	return (len);
+}
+
+int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
-	// int		d;
-	char	c;
-	// char	*s;
 	size_t	i;
+	int		len;
 
 	i = 0;
+	len = 0;
 	va_start(ap, fmt);
-	while(fmt[i])
+	while (fmt[i])
 	{
 		if (fmt[i] == '%')
-		{
-			if (fmt[i + 1] == 's')
-				ft_putstr_fd(va_arg(ap, char *), 1);
-			else if(fmt[i + 1] == 'c')
-			{
-				c = (char) va_arg(ap, int);
-				ft_putchar_fd(c, 1);
-			}
-
-			// else if (fmt[i + 1] == 'd')	
-		}
+			len += ft_handle(ap, fmt[i + 1]);
+		else
+			return (-1);
 		i++;
 	}
 	va_end(ap);
-	return (0);
+	return (len);
+
 }
+/*
 #include <stdio.h>
 int main()
 {
@@ -55,4 +66,4 @@ int main()
 	//printf("\n%p\n%p\n%p\n%p", str, c, s, s2);
 	printf("\n%c", c1);
 
-}
+}*/
