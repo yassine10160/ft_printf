@@ -6,7 +6,7 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:11:51 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/10 16:48:15 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:52:28 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	ft_handle(va_list ap, char c)
 		d = (char) va_arg(ap, int);
 		ft_putchar(d);
 	}
-	else if (c == 'd')
+	else if (c == 'd' || c == 'i')
 		len = ft_printnbr(va_arg(ap, int));
+	else if (c == 'x' || c == 'X')
+		len = ft_print_hexa(va_arg(ap, unsigned int), c);
 	return (len);
 }
 
@@ -63,13 +65,14 @@ int main()
 	// char	*s = "hi everyone";
 	// char	*s2 = "letsgo";
 	// char	c1 = 'h';
-	int		n = 46003;
+	// int		n = 46003;
 
 	//ft_printf("%d", n);
-	printf("\n%d", ft_printf("%d", n));
+	// printf("\n%d", ft_printf("%d", n));
 	//printf("\n%p\n%p\n%p\n%p", str, c, s, s2);
 	//printf("\n%c", c1);
-	printf("\n%d", n);
+	// printf("\n%d", n);
+	printf("%X\n", -26);
+	ft_printf("%X", -26);
 
-}
-*/
+}*/
