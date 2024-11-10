@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_print_ui.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 13:33:42 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/10 18:13:07 by yafahfou         ###   ########.fr       */
+/*   Created: 2024/11/10 18:05:19 by yafahfou          #+#    #+#             */
+/*   Updated: 2024/11/10 18:14:51 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "libft/libft.h"
+#include "printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_print_ui(unsigned int ui)
+{
+	char	*dest;
 
-int		ft_putchar(char c);
-int		ft_print_hexa(unsigned int nb, char c);
-void	ft_print_memeory(char *addr);
-int		ft_putstr(char *str);
-int		ft_printnbr(int nb);
-char	*ft_uitoa(unsigned int n);
-int		ft_print_ui(unsigned int ui);
-
-#endif
+	dest = ft_uitoa(ui);
+	ft_putstr_fd(dest, 1);
+	return (ft_strlen(dest));
+}

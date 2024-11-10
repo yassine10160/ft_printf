@@ -6,7 +6,7 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:11:51 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/10 17:52:28 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:14:32 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_handle(va_list ap, char c)
 		len = ft_printnbr(va_arg(ap, int));
 	else if (c == 'x' || c == 'X')
 		len = ft_print_hexa(va_arg(ap, unsigned int), c);
+	else if (c == 'u')
+		len = ft_print_ui(va_arg(ap, unsigned int));
 	return (len);
 }
 
@@ -72,7 +74,7 @@ int main()
 	//printf("\n%p\n%p\n%p\n%p", str, c, s, s2);
 	//printf("\n%c", c1);
 	// printf("\n%d", n);
-	printf("%X\n", -26);
-	ft_printf("%X", -26);
+	printf("%u\n", -26);
+	ft_printf("%u", -26);
 
 }*/
