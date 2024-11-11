@@ -1,55 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 13:52:19 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 12:30:59 by yafahfou         ###   ########.fr       */
+/*   Created: 2024/11/08 14:54:33 by yafahfou          #+#    #+#             */
+/*   Updated: 2024/11/11 12:49:18 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_convert_hexa(unsigned int nb, char c)
+void	ft_conv_hexa(unsigned long long nb)
 {
 	char	*base;
 	size_t	i;
-	char	*base2;
 
 	base = "0123456789abcdef";
-	base2 = "0123456789ABCDEF";
 	i = 0;
 	if (nb >= 16)
 	{
-		ft_convert_hexa(nb / 16, c);
-		ft_convert_hexa(nb % 16, c);
+		ft_conv_hexa(nb / 16);
+		ft_conv_hexa(nb % 16);
+	}
+	else
+		write(1, &base[nb], 1);
+}
+
+int	ft_print_ptr(unsigned long long addr)
+{
+	size_t	i;
+
+	i = 0;
+	if (!addr)
+	{
+		ft_putstr("(nil)");
+		return (5);
 	}
 	else
 	{
-		if (c == 'x')
-			write(1, &base[nb], 1);
-		else if (c == 'X')
-			write(1, &base2[nb], 1);
+		i = 2;
+		write(1, "0x", 2);
+		ft_conv_hexa(addr);
 	}
-}
-
-int	ft_print_hexa(unsigned int nb, char c)
-{
-	unsigned int	len;
-
-	len = 0;
-	ft_convert_hexa(nb, c);
-	while (nb > 0)
+	while (addr > 0)
 	{
-		nb = nb / 16;
-		len++;
+		addr /= 16;
+		i++;
 	}
-	return (len);
+	return (i);
 }
-/*
-int	main()
-{
-	__builtin_printf("\n%d",ft_count_hexa(26, 'X'));
-}*/

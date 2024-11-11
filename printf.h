@@ -6,7 +6,7 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:33:42 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/10 18:13:07 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/11 12:40:57 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		ft_putchar(char c);
 int		ft_print_hexa(unsigned int nb, char c);
-void	ft_print_memeory(char *addr);
+int		ft_print_ptr(unsigned long long addr);
 int		ft_putstr(char *str);
 int		ft_printnbr(int nb);
 char	*ft_uitoa(unsigned int n);
