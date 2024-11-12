@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 15:17:58 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 16:55:05 by yafahfou         ###   ########.fr       */
+/*   Created: 2024/11/11 16:58:07 by yafahfou          #+#    #+#             */
+/*   Updated: 2024/11/11 17:00:52 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_putchar(char c)
+void	ft_putstr_fd(char *str, int fd)
 {
-	return (write(1, &c, 1));
+	write(fd, str, ft_strlen(str));
 }

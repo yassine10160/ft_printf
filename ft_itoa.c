@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 17:56:49 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 16:54:57 by yafahfou         ###   ########.fr       */
+/*   Created: 2024/11/11 16:51:05 by yafahfou          #+#    #+#             */
+/*   Updated: 2024/11/11 16:51:48 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-unsigned int	ft_count_ui(unsigned int n)
+int	ft_count_nb(int n)
 {
-	unsigned int	c;
+	int				c;
+	unsigned int	nb;
 
 	c = 0;
 	if (n == 0)
 		return (1);
-	while (n > 0)
+	if (n < 0)
 	{
-		n /= 10;
+		n = -n;
+		c++;
+	}
+	nb = n;
+	while (nb > 0)
+	{
+		nb /= 10;
 		c++;
 	}
 	return (c);
 }
 
-char	*ft_fill_str(char *dest, unsigned int ui, int len, int cpt)
+char	*fill_str(char *dest, unsigned int ui, int len, int cpt)
 {
 	int		i;
 
@@ -43,24 +50,32 @@ char	*ft_fill_str(char *dest, unsigned int ui, int len, int cpt)
 	return (dest);
 }
 
-char	*ft_uitoa(unsigned int n)
+char	*ft_itoa(int n)
 {
 	char			*dest;
+	unsigned int	nb;
 	int				i;
 	int				cpt;
 
-	i = ft_count_ui(n);
+	i = ft_count_nb(n) - 1;
 	cpt = 0;
-	dest = malloc((ft_count_ui(n) + 1) * sizeof(char));
+	dest = malloc((ft_count_nb(n) + 1) * sizeof(char));
 	if (!dest)
 		return (dest);
-	dest = ft_fill_str(dest, n, i, cpt);
+	if (n < 0)
+	{
+		n = -n;
+		dest[0] = '-';
+		cpt++;
+	}
+	nb = n;
+	dest = fill_str(dest, nb, i + 1, cpt);
 	return (dest);
 }
 /*
 #include <stdio.h>
 int	main()
 {	
-	unsigned int	n = -1;
-	printf("%s\n", ft_uitoa(n));
+	int	n = -2147483648;
+	printf("%s\n", ft_itoa(n));
 }*/

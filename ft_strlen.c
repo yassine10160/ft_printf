@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 15:17:58 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 16:55:05 by yafahfou         ###   ########.fr       */
+/*   Created: 2024/11/11 16:53:07 by yafahfou          #+#    #+#             */
+/*   Updated: 2024/11/11 17:01:44 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_putchar(char c)
+size_t	ft_strlen(char *str)
 {
-	return (write(1, &c, 1));
+	size_t	i;
+
+	i = 0;
+	while (str && str[i])
+		i++;
+	return (i);
 }
