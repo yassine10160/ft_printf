@@ -6,50 +6,31 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:52:19 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 12:30:59 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:02:22 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_convert_hexa(unsigned int nb, char c)
+int	ft_print_hexa(unsigned int nb, char c)
 {
-	char	*base;
-	size_t	i;
+	int		count;
+	char	*base1;
 	char	*base2;
 
-	base = "0123456789abcdef";
+	count = 0;
+	base1 = "0123456789abcdef";
 	base2 = "0123456789ABCDEF";
-	i = 0;
-	if (nb >= 16)
+	if (nb < 16)
 	{
-		ft_convert_hexa(nb / 16, c);
-		ft_convert_hexa(nb % 16, c);
+		if (c == 'x')
+			return (count + write(1, &base1[nb], 1));
+		else
+			return (count + write(1, &base2[nb], 1));
 	}
 	else
 	{
-		if (c == 'x')
-			write(1, &base[nb], 1);
-		else if (c == 'X')
-			write(1, &base2[nb], 1);
+		count += ft_print_hexa(nb / 16, c);
+		return (count += ft_print_hexa(nb % 16, c));
 	}
 }
-
-int	ft_print_hexa(unsigned int nb, char c)
-{
-	unsigned int	len;
-
-	len = 0;
-	ft_convert_hexa(nb, c);
-	while (nb > 0)
-	{
-		nb = nb / 16;
-		len++;
-	}
-	return (len);
-}
-/*
-int	main()
-{
-	__builtin_printf("\n%d",ft_count_hexa(26, 'X'));
-}*/
