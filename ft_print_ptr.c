@@ -6,7 +6,7 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:54:33 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/11 12:49:18 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/14 19:42:14 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_print_ptr(unsigned long long addr)
 {
 	size_t	i;
 
+	__builtin_printf("coucou:%llu \n", addr);
 	i = 0;
 	if (!addr)
 	{
@@ -51,3 +52,13 @@ int	ft_print_ptr(unsigned long long addr)
 	}
 	return (i);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	// printf("")
+// 	char	oe[]="bonjour";
+// 	printf("%p \n", &oe);
+// 	printf("%p \n", &oe[0]);
+// 	printf("%p", &oe[1]);
+// }

@@ -6,7 +6,7 @@
 /*   By: yafahfou <yafahfou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:11:51 by yafahfou          #+#    #+#             */
-/*   Updated: 2024/11/13 14:01:34 by yafahfou         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:09:35 by yafahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	ft_printf(const char *fmt, ...)
 	return (len);
 }
 
-// #include <stdio.h>
-// int main(void)
-// {
+#include <stdio.h>
+int main(void)
+{
 //     // Test de %c (caractère)
 //     printf("FAKE = %d\n", ft_printf("Test %c caractère\n", 'A'));
 // 	printf("REAL = %d\n", printf("Test %c caractère\n", 'A'));
@@ -106,8 +106,8 @@ int	ft_printf(const char *fmt, ...)
 //     printf("-----\n");
 
 //     // Test de %d et %i (entiers signés)
-//     printf("FAKE = %d \n", ft_printf("Test %d entier\n", -12));
-// 	printf("REAL = %d\n", printf("Test %d entier\n", -12));
+//     printf("FAKE = %d \n", ft_printf("Test %d entier\n", -2147483648));
+// 	// printf("REAL = %d\n", printf("Test %d entier\n", -2147483648));
 //     printf("-----\n");
 
 //     // Test de %u (entier non signé)
@@ -139,4 +139,7 @@ int	ft_printf(const char *fmt, ...)
 //     printf("FAKE = %d \n", ft_printf("Test %p pointeur NULL\n", NULL));
 // 	printf("REAL = %d\n", printf("Test %p pointeur NULL\n", NULL));
 //     printf("-----\n");
-// }
+	printf("%d", ft_printf("%l", 26));
+	printf("%d", printf("%l", 26));
+	// printf("\n%x%l", 26);
+}
